@@ -1,0 +1,615 @@
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+width: 100%;
+overflow-x: hidden;
+}
+
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+scroll-behavior: smooth; /* ✅ Permet un défilement fluide */
+}
+
+/********************PREHEADER*************************/
+
+#preheader{
+padding: 4px;
+background-color: black;
+color: white;
+text-align: center; /* ✅ CENTRAGE DU TEXTE */
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.icone {
+  max-width: 28px;
+  height: auto;
+  margin: 0 12px; /* espace autour de l'image */
+}
+
+/********************HEADER*************************/
+
+header {
+display: block;
+justify-content: space-between;
+align-items: center;
+text-align: center;
+}
+
+#logo {
+  max-width: 162px; /* taille max (tu ajustes la valeur) */
+  margin: auto; /* centre le logo */
+}
+
+#titre{
+font-size: clamp(3rem, 4vw, 2rem);
+}
+
+/********************MENU*************************/
+
+.menu {
+  padding-bottom:16px;
+  display: flex;
+  justify-content: center; /* centrage horizontal */
+  align-items: center; /* centrage vertical */
+  background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+  position: relative;
+  gap: 20px; /* espace entre les items du menu */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  transition: background 0.3s ease;
+}
+
+/* Style des liens du menu */
+.menu a {
+  font-size: 20px;
+  text-shadow: 
+    0 0 5px #ffffaa,
+    0 0 10px #ffea00,
+    0 0 20px #ffdd00,
+    0 0 15px #ffcc00; /* glow lumineux magique */
+  text-decoration: none;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px;
+  display: inline-block; /* <-- IMPORTANT */
+  transition: all 0.2s ease-in-out;
+}
+
+/* Effet hover */
+.menu a:hover {
+  transform: scale(1.1);
+}
+
+
+/* MENU LISTE */
+.menu ul {
+display: flex;
+justify-content: center; /* <-- CENTRAGE HORIZONTAL */
+gap: 20px;
+list-style: none;
+margin: 0;
+padding: 0;
+}
+
+.menu li a {
+color: white;
+text-decoration: none;
+font-weight: bold;
+}
+
+/* BOUTON BURGER */
+#burger {
+display: none;
+font-size: 28px;
+background: none;
+border: none;
+color: white;
+cursor: pointer; 
+  
+  background: linear-gradient(135deg, #ffcb05, #ff8000);
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+#burger:hover {
+  transform: scale(1.1);
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 1024px) {
+
+  /* ======= Sous-menu ======= */
+.menu li { position: relative; }
+
+/* apparence du sous-menu (desktop) */
+.menu .submenu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: rgba(30,30,30,0.95);
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  min-width: 180px;
+  border-radius: 8px;
+  z-index: 9999;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.menu .submenu li a {
+  display: block;
+  padding: 10px 16px;
+  color: #fff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.menu .submenu li a:hover {
+  background: rgba(255,203,5,0.12);
+}
+
+/* show au hover sur desktop */
+@media (hover: hover) and (pointer: fine) {
+  .menu li:hover > .submenu { display: block; }
+}
+
+/* mobile : sous-menu géré par .show */
+@media (max-width: 1200px) {
+  .menu .submenu {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: #333;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  .menu .submenu.show {
+    display: flex;
+    flex-direction: column;
+  }
+}
+  #burger {
+    display: block; /* Affiche le burger sur mobile */
+  }
+
+#menu-list {
+display: none; /* Cache le menu */
+flex-direction: column;
+background-color: #333;
+position: absolute;
+top: 100%;
+left: 0;
+width: 100%;
+padding: 10px 0;
+}
+
+#menu-list.show {
+display: flex; /* Affiche le menu quand actif */
+}
+
+.menu ul li {
+text-align: center;
+padding: 10px 0;
+}
+}
+
+.menu, #menu-list {
+  position: relative;
+  z-index: 9999; /* garanti toujours au-dessus */
+}
+
+/* ======= Sous-menu ======= */
+
+.menu li { position: relative; }
+
+/* apparence du sous-menu (desktop) */
+.menu .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+ 
+  left: 0;
+  background: rgba(30,30,30,0.95);
+  list-style: none;
+  margin: 0;
+  padding: 6px 0;
+  min-width: 180px;
+  border-radius: 8px;
+  z-index: 9999;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.menu .submenu li a {
+  display: block;
+  padding: 10px 16px;
+  color: #f7925c;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.menu .submenu li a:hover {
+  background: rgba(255,203,5,0.12);
+}
+
+/* show au hover sur desktop */
+@media (hover: hover) and (pointer: fine) {
+  .menu li:hover > .submenu { display: block; }
+}
+
+/* mobile : sous-menu géré par .show */
+@media (max-width: 1200px) {
+  .menu .submenu {
+    position: relative;
+    top: 0;
+    left: 0;
+    background: #333;
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  .menu .submenu.show {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+/********************LORE*************************/
+
+.video {
+position: relative;
+padding-bottom: 56.25%; /* 16:9 ratio */
+height: 0;
+overflow: hidden;
+max-width: 100%;
+}
+
+.video iframe {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border: none;
+}
+
+/********************CONCEPT*************************/
+
+/********************TICKETS*************************/
+
+h1{
+text-align: center;
+padding: 16px;
+color: #ffcb05;
+text-transform: uppercase;
+letter-spacing: 1.8px;
+animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #ffcb05, 0 0 10px #ffcb05;
+  }
+  to {
+    text-shadow: 0 0 20px #ff8000, 0 0 30px #ff8000;
+  }
+}
+    
+.intro {
+text-align: center;
+margin-bottom: 30px;
+font-size: 1.1em;
+}
+
+#intro {
+font-family: 'Comic Sans MS', cursive, sans-serif;
+text-align: center;
+font-size: clamp(0.8rem, 4vw, 1.4rem);
+font-weight: bold;
+}
+
+table {
+width: 100%;
+max-width: 900px;
+margin: auto;
+border-collapse: collapse;
+background: rgba(30, 30, 30, 0.95);
+border-radius: 12px;
+overflow: hidden;
+box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/**responsive ca doit faire qu'on puisse scroller sur mobile**/
+
+td {
+  color: #ddd;
+}
+
+tr:hover {
+  background: rgba(255, 203, 5, 0.1);
+}
+
+thead {
+background-color: #444;
+}
+
+th, td {
+padding: 15px 20px;
+text-align: left;
+}
+
+th {
+text-align: center;
+background: #ffcb05;
+color: #111;;
+font-size: 1.2em;
+border-bottom: 2px solid #ffcb05;
+}
+
+tr:not(:last-child) td {
+border-bottom: 1px solid #444;
+}
+
+tr:hover {
+background-color: #3a3a3a;
+}
+
+.category {
+background-color: #333;
+font-weight: bold;
+color: #ffffff;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+font-size: 0.95em;
+}
+
+.category td {
+  background: #2b2b2b;  /* fond légèrement plus sombre */
+  font-weight: bold;
+  border-top: 1px solid #ffcb05; /* séparateur visible */
+}
+
+.emoji {
+font-size: 1.2em;
+margin-right: 5px;
+}
+
+@media screen and (max-width: 600px) {
+td, th {
+ font-size: 0.9em;
+padding: 10px 12px;
+}
+}
+
+.galerie {
+display: flex;
+flex-wrap: wrap;
+max-width: 600px; /* ou 3 * taille image */
+margin: auto;
+gap: 10px;
+}
+
+.galerie img {
+width: 32%;        /* 3 images par ligne avec petit espace */
+aspect-ratio: 1/1; /* pour forcer un carré */
+object-fit: cover; /* recadre bien l'image dans le carré */
+border: 2px solid #ccc;
+border-radius: 4px;
+}
+
+.image-seule {
+margin: 20px auto 0;
+text-align: center;
+}
+
+.image-seule img {
+width: 32%;        /* même taille que les autres */
+aspect-ratio: 1/1;
+object-fit: cover;
+border: 2px solid #ccc;
+border-radius: 4px;
+}
+
+/********************FOOTER*************************/
+
+
+/********************COPYRIGHT*************************/
+
+#copyright {
+  padding: 8px;
+background-color: black;
+color: white;
+text-align: center; /* ✅ CENTRAGE DU TEXTE */
+}
+
+footer p {
+padding: 1px;
+font-size: 14px;
+font-style: italic;
+}
+
+/* === BACKGROUND === */
+
+#preheader, #copyright {
+  background: linear-gradient(90deg, #000, #222);
+}
+
+#preheader, #copyright {
+  background: linear-gradient(90deg, #000, #222);
+  color: #fff;
+}
+
+/* HEADER */
+header {
+  background: linear-gradient(135deg, #2d2d2d, #1a1a1a);
+  color: white;
+  padding: 40px 20px;
+}
+
+/* LORE */
+#lore {
+  background: linear-gradient(135deg, #001f3f, #003366);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px 0;
+}
+
+/* TICKETS */
+#tickets {
+  background: linear-gradient(135deg, #1a1a1a, #333);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px auto;
+}
+
+/* RÈGLEMENT */
+#reglement {
+  background: linear-gradient(135deg, #2c003e, #000);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px auto;
+}
+
+/* LOTS */
+#lots {
+  background: linear-gradient(135deg, #004d40, #00251a);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px auto;
+}
+
+/* PALIERS */
+#paliers {
+  background: linear-gradient(135deg, #ff6f00, #e65100);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px auto;
+}
+
+/* MINIJEUX */
+#minijeux {
+  background: linear-gradient(135deg, #0d47a1, #001f54);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px auto;
+}
+
+/* GRAND JEUX */
+#grandjeu {
+  background: linear-gradient(135deg, #880e4f, #4a0033);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px auto;
+}
+
+/* ROUES */
+#roues {
+  background: linear-gradient(135deg, #1a237e, #000051);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px auto;
+}
+
+/* ON RECHERCHE */
+#onrecherche {
+  background: linear-gradient(135deg, #33691e, #1b5e20);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px auto;
+}
+
+/* NOUS SUIVRE */
+#noussuivre {
+  background: linear-gradient(135deg, #ff1744, #b71c1c);
+  color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 1px auto;
+}
+
+#noussuivre a {
+  color : #ff1744;
+  font-style: italic;
+}
+
+#noussuivre a:hover { 
+color: white; 
+}
+
+/*******MENU INFO******/
+
+.info-box {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 2px solid #ffcb05;
+  border-radius: 12px;
+  color: #eee;
+  font-size: 0.95em;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  text-align: center;
+}
+
+.info-box strong {
+color: #ffcb05;
+font-weight: bold;
+font-size: 20px;
+line-height: 1; /* réduit l’espace autour de l’emoji */
+display: block;
+}
+
+.emote{
+  font-size: 40px;
+}
+
+/********************BOUTON RETOUR HAUT*************************/
+
+    #btnRetourHaut {
+      display: none; /* caché par défaut */
+      position: fixed;
+      bottom: 40px;
+      right: 40px;
+      z-index: 9999;
+      font-size: 40px;
+      background-color: #FF3B30;
+      color: black;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: background-color 0.3s, transform 0.3s;
+    }
+
+    #btnRetourHaut:hover {
+      background-color: #555;
+      transform: scale(1.1);
+    }
+
+
+
